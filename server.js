@@ -6,6 +6,7 @@ let cookies = require('./mis-koa/mis-cookie')
 let mis = new Mis();
   //判断ip是否存在
 CONFIG.ip == '' ? CONFIG.ip = 'localhost' : ''
+
 mis.use(static(CONFIG.buildRoot));
 mis.use(bodyparser())
 mis.use(cookies())
