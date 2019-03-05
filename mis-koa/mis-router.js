@@ -24,7 +24,7 @@ class misRouter{
         this.opts = {}
         this.stack = []
         this.methods = ['get','post']
-        this.methods.forEach(method =>{
+        this.methods.forEach(method => {
             misRouter.prototype[method] = (path,middleware) => {
                 this.stack.push(this.register(path,method,middleware))
             }
@@ -45,12 +45,12 @@ class misRouter{
      * @param {路径} path
      */
     filterRoute(path,method){
-      return this.stack.filter((item)=>{
+      return this.stack.filter((item) => {
              return item.path == path && item.method == method
         })
     }
     routes(){
-        return (ctx,next) =>{
+        return (ctx,next) => {
             let curPath = ctx.path
             let method = ctx.req.method.toLowerCase()
             let mathRoute = this.filterRoute(curPath,method)
